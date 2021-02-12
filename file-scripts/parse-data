@@ -1,0 +1,32 @@
+#! /bin/bash
+
+echo $1
+
+#check if the file exists, then go
+#if [[ -f $1]]
+#then
+	#echo "since the file does exist, continue"
+#else 
+	#echo "ending the script and exiting"
+	#exit
+#fi
+
+echo "E for get emails"
+
+read input
+
+output=list-emails.txt
+
+if [[ $input = "E" ]]
+then
+	echo "Getting the list of emails from $1"
+	egrep -o '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' list.txt > list-emails.txt
+# used a regular expression that looks for emails by looking for alphanumeric characters and digits followed by a @ and then more alphanumeric characters and digits.
+
+	echo "Email list of $1 sent to list-email.txt"
+else
+	echo "Invalid Input. Exiting script"
+fi
+
+
+
